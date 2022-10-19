@@ -12,6 +12,12 @@ export class User extends Document {
   lastname: string;
 
   @Prop({ required: true })
+  password: string;
+
+  @Prop({ required: true })
+  email: string;
+
+  @Prop({ required: true })
   dni: string;
 
   @Prop({ required: true })
@@ -20,18 +26,19 @@ export class User extends Document {
   @Prop({ required: true })
   phone: string;
 
-  @Prop({ required: true })
-  email: string;
-
-  @Prop({ required: true })
-  password: string;
-
   @Prop({
     required: true,
     type: MongooseSchema.Types.ObjectId,
     ref: 'TypeUser',
   })
   typeUser: Types.ObjectId;
+
+  @Prop({
+    required: false,
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'Specialization',
+  })
+  typesSpecialization: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
