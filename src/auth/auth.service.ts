@@ -18,7 +18,7 @@ export class AuthService {
   ){}
 
 
-  async create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto){
     let existAccount = await this.findOne(createUserDto.email);
     if(existAccount){
       throw new BadRequestException(`Esta email ya esta en uso`);
@@ -35,7 +35,7 @@ export class AuthService {
     }
   }
 
-  async login(loginDto: LoginDto) {
+  async login(loginDto: LoginDto){
     let existAccount = await this.findOne(loginDto.email);
     const comparePassword = await bcrypt.compare(loginDto.password,existAccount.password)
     if(existAccount && comparePassword){
@@ -76,7 +76,7 @@ export class AuthService {
     }
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all auth`;
   }
 

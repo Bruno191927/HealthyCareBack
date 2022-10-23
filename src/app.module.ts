@@ -7,6 +7,10 @@ import { AppoimentModule } from './appoiment/appoiment.module';
 import { CommonModule } from './common/common.module';
 import { ConfigModule } from '@nestjs/config';
 import { EnvConfiguration } from './config/app.config';
+import { AnalysisModule } from './analysis/analysis.module';
+import { HistorialModule } from './historial/historial.module';
+import { DoctorModule } from './doctor/doctor.module';
+import { PacientModule } from './pacient/pacient.module';
 
 @Module({
   imports: [
@@ -19,7 +23,9 @@ import { EnvConfiguration } from './config/app.config';
     MongooseModule.forRoot(process.env.MONGODB),
     AuthModule,
     AppoimentModule, 
-    CommonModule,
-  ]
+    CommonModule, 
+    AnalysisModule, 
+    HistorialModule, DoctorModule, PacientModule,
+  ],
 })
 export class AppModule {}
